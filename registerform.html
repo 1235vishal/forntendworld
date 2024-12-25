@@ -6,7 +6,170 @@
   <title> Responsive Registration Form | CodingLab </title>
   <link rel="stylesheet" href="style.css">
 </head>
-<style>
+
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  
+    <style>
+      
+      *{
+        margin: 0;
+        padding: 0;
+      }
+     
+  
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        font-family: Arial, sans-serif;
+        color: hsl(0, 0%, 3.9%);
+        background-image: url('contactfrombg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+  
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        color: white;
+        background-color: #555252;
+        overflow-y: auto;
+        transition: all 0.3s ease;
+        z-index: 1050;
+      }
+  
+      .sidebar.active {
+        left: 0;
+      }
+  
+      .sidebar .nav-link {
+        color: rgb(0, 0, 0);
+      }
+  
+      .content {
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+      }
+  
+      .content.shifted {
+        margin-left: 250px;
+      }
+  
+      .navbar-toggler-icon {
+        cursor: pointer;
+      }
+  
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+      }
+  
+      @media (max-width: 768px) {
+        .logo {
+          height: 119px;
+          width: 136px;
+          position: relative;
+          right: 7px;
+          bottom: 26px;
+        }
+  
+        .navbar {
+          height: 69px;
+          width: 163%;
+        }
+  
+        .navbar-toggler {
+          top: -18px;
+          position: relative;
+        }
+      }
+    </style>
+  
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="./home.html">
+        <img class="logo" src="./0-Photoroom.png" alt="MyApp Logo" height="80" />
+      </a>
+      <button class="navbar-toggler ml-auto" type="button" id="toggleSidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/admin/login">Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">UserName!</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user/dashboard">User Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="sidebar" id="sidebar">
+      <span class="close-btn" id="closeSidebar">&times;</span>
+      <ul class="nav flex-column p-3">
+        <li class="nav-item"><a class="nav-link" href="/admin/login">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">UserName!</a></li>
+        <li class="nav-item"><a class="nav-link" href="/user/dashboard">User Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+      </ul>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+    <script>
+      // Smooth GSAP animation for navbar
+      gsap.from(".navbar", {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        ease: "power3.out"
+      });
+  
+      // Staggered animation for nav links
+      gsap.from(".navbar-nav .nav-item", {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2, // Delay between each item
+        delay: 0.5, // Wait for the navbar animation to complete
+      });
+  
+      // Sidebar toggle functionality
+      document.getElementById("toggleSidebar").addEventListener("click", () => {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.add("active");
+      });
+  
+      document.getElementById("closeSidebar").addEventListener("click", () => {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.remove("active");
+      });
+    </script>
+
+ <style>
   /* Importing Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -17,16 +180,18 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-  height: 100vh;
+.regsteriform {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background-image: url('contactfrombg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.container {
+.wrapper {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -35,13 +200,13 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-.container .title {
+.wrapper .heading {
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
 
-.container .title::before {
+.wrapper .heading::before {
   content: "";
   position: absolute;
   left: 0;
@@ -52,14 +217,14 @@ body {
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-.content form .user-details {
+.form-content form .details-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
 
-form .user-details .input-box {
+form .details-section .input-box {
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
@@ -70,7 +235,7 @@ form .input-box span.details {
   margin-bottom: 5px;
 }
 
-.user-details .input-box input {
+.details-section .input-box input {
   height: 45px;
   width: 100%;
   outline: none;
@@ -82,30 +247,30 @@ form .input-box span.details {
   transition: all 0.3s ease;
 }
 
-.user-details .input-box input:focus,
-.user-details .input-box input:valid {
+.details-section .input-box input:focus,
+.details-section .input-box input:valid {
   border-color: #9b59b6;
 }
 
-form .gender-details .gender-title {
+form .gender-section .gender-title {
   font-size: 20px;
   font-weight: 500;
 }
 
-form .category {
+form .gender-category {
   display: flex;
   width: 80%;
   margin: 14px 0;
   justify-content: space-between;
 }
 
-form .category label {
+form .gender-category label {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-form .category label .dot {
+form .gender-category label .dot {
   height: 18px;
   width: 18px;
   border-radius: 50%;
@@ -115,9 +280,9 @@ form .category label .dot {
   transition: all 0.3s ease;
 }
 
-#dot-1:checked~.category label .one,
-#dot-2:checked~.category label .two,
-#dot-3:checked~.category label .three {
+#dot-1:checked~.gender-category label .one,
+#dot-2:checked~.gender-category label .two,
+#dot-3:checked~.gender-category label .three {
   background: #9b59b6;
   border-color: #d9d9d9;
 }
@@ -126,12 +291,12 @@ form input[type="radio"] {
   display: none;
 }
 
-form .button {
+form .submit-btn {
   height: 45px;
   margin: 35px 0
 }
 
-form .button input {
+form .submit-btn input {
   height: 100%;
   width: 100%;
   border-radius: 5px;
@@ -145,50 +310,73 @@ form .button input {
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-form .button input:hover {
+form .submit-btn input:hover {
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
 
 /* Responsive media query code for mobile devices */
 @media(max-width: 584px) {
-  .container {
+  .wrapper {
     max-width: 100%;
   }
 
-  form .user-details .input-box {
+  form .details-section .input-box {
     margin-bottom: 15px;
     width: 100%;
   }
 
-  form .category {
+  form .gender-category {
     width: 100%;
   }
 
-  .content form .user-details {
+  .form-content form .details-section {
     max-height: 300px;
     overflow-y: scroll;
   }
 
-  .user-details::-webkit-scrollbar {
+  .details-section::-webkit-scrollbar {
     width: 5px;
   }
 }
 
 /* Responsive media query code for mobile devices */
 @media(max-width: 459px) {
-  .container .content .category {
+  .wrapper .form-content .gender-category {
     flex-direction: column;
   }
 }
-</style>
-<body>
-  <div class="container">
+
+@media(max-width: 480px) {
+    .regsteriform {
+        width: 160%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-image: url('contactfrombg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+      .wrapper {
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      }
+  }
+</style>   
+<section class="regsteriform"> 
+  <div class="wrapper">
     <!-- Title section -->
-    <div class="title">Registration</div>
-    <div class="content">
+    <div class="heading">Registration</div>
+    <div class="form-content">
       <!-- Registration form -->
       <form action="#">
-        <div class="user-details">
+        <div class="details-section">
           <!-- Input for Full Name -->
           <div class="input-box">
             <span class="details">Full Name</span>
@@ -219,14 +407,19 @@ form .button input:hover {
             <span class="details">Confirm Password</span>
             <input type="text" placeholder="Confirm your password" required>
           </div>
+          <div class="input-box">
+            <span class="details">Profile Image</span>
+            <input type="file" accept="image/*" required>
+          </div>
+          
         </div>
-        <div class="gender-details">
+        <div class="gender-section">
           <!-- Radio buttons for gender selection -->
           <input type="radio" name="gender" id="dot-1">
           <input type="radio" name="gender" id="dot-2">
           <input type="radio" name="gender" id="dot-3">
           <span class="gender-title">Gender</span>
-          <div class="category">
+          <div class="gender-category">
             <!-- Label for Male -->
             <label for="dot-1">
               <span class="dot one"></span>
@@ -245,11 +438,88 @@ form .button input:hover {
           </div>
         </div>
         <!-- Submit button -->
-        <div class="button">
+        <div class="submit-btn">
           <input type="submit" value="Register">
         </div>
       </form>
     </div>
   </div>
+  </section>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+
+    @media (max-width: 480px) {
+
+      .bg {
+        width: 129%;
+               top: -43px;
+        left: 53px;
+        position: relative;
+      }
+    }
+  </style>
+
+  <!-- Bootstrap 5 Footer -->
+  <!-- Bootstrap 5 Footer -->
+  <footer class="bg text-black py-5">
+    <div class="container">
+      <div class="row text-center text-md-start">
+
+        <!-- Logo Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <img href="/" src="./0-Photoroom.png" alt="Company Logo" class="img-fluid" style="max-width: 120px;">
+        </div>
+
+        <!-- Links Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled">
+            <li><a href="/" class="text-black text-decoration-none d-block mb-2">Home</a></li>
+            <li><a href="./about.html" class="text-black text-decoration-none d-block mb-2">About Us</a></li>
+            <li><a href="./pglisting .html"" class=" text-black text-decoration-none d-block
+                mb-2">Listings</a></li>
+            <li><a href="/contact" class="text-black text-decoration-none d-block mb-2">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Contact Information</h5>
+          <p>Email: contact@yourcompany.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+
+        <!-- Social Media Links Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="text-black me-3"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-black me-3"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-black me-3"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-black"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+      </div>
+
+      <!-- Copyright and Disclaimer -->
+      <div class="text-center mt-4">
+        <p class="mb-0 text-muted">Copyright © 2024 | All Rights Reserved | <a href="#"
+            class="text-decoration-none">Sitemap</a></p>
+        <p class="mb-0 text-muted">Images shown are for representational purposes only. Amenities depicted may or may
+          not form a part of that individual property.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 and Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- Bootstrap 5 and Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  
 </body>
 </html>
