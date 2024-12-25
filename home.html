@@ -25,19 +25,39 @@
     .sidebar {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -100%; /* Start completely hidden */
+      width: 86%;
       height: 100%;
       color: white;
-      background-color: #555252;
+      background-color: #FFFFFF;
       overflow-y: auto;
       transition: all 0.3s ease;
       z-index: 1050;
     }
 
-    .sidebar.active {
-      left: 0;
+    .p-3 {
+      font-size: 46px;
+      padding: 1rem !important;
+  }
+
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        right: 36px;
+        position: relative;
+        display: flex !important
+;
+        flex-basis: auto;
     }
+}
+    
+    .sidebar.active {
+      left: 0; /* Fully visible when active */
+    }
+    
+    .content.shifted {
+      margin-left: 250px; /* Adjust margin if needed for shifted content */
+    }
+    
 
     .sidebar .nav-link {
       color: rgb(0, 0, 0);
@@ -47,6 +67,13 @@
       margin-left: 0;
       transition: margin-left 0.3s ease;
     }
+
+    @media (min-width: 992px) {
+      .navbar-expand-lg .navbar-nav {
+          gap: 32px;
+          flex-direction: row;
+      }
+  }
 
     .content.shifted {
       margin-left: 250px;
@@ -58,12 +85,16 @@
 
     .close-btn {
       position: absolute;
-      top: 10px;
+      top: -59px;
       right: 10px;
-      font-size: 24px;
+      font-size: 109px;
       color: rgb(0, 0, 0);
       cursor: pointer;
     }
+    .content.shifted {
+      margin-left: 100%; /* Match the sidebar width */
+    }
+    
 
     @media (max-width: 768px) {
       .logo {
@@ -84,6 +115,34 @@
         position: relative;
       }
     }
+    .navbar-nav .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #000000f9; /* Dark black color for normal state */
+      font-weight: bold; /* Bold text */
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #C61300; /* Hover color */
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px; /* Thickness of the underline */
+      background: #C61300; /* Underline color */
+      left: 0;
+      bottom: -5px; /* Space between text and underline */
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+    
   </style>
 </head>
 
@@ -146,16 +205,18 @@
       delay: 0.5, // Wait for the navbar animation to complete
     });
 
-    // Sidebar toggle functionality
     document.getElementById("toggleSidebar").addEventListener("click", () => {
       const sidebar = document.getElementById("sidebar");
       sidebar.classList.add("active");
+      document.querySelector(".content").classList.add("shifted");
     });
-
+    
     document.getElementById("closeSidebar").addEventListener("click", () => {
       const sidebar = document.getElementById("sidebar");
       sidebar.classList.remove("active");
+      document.querySelector(".content").classList.remove("shifted");
     });
+    
   </script>
 
 
@@ -401,7 +462,7 @@
       .paragraphs-container {
         right: -7px;
         position: relative;
-        top: 576px;
+        top: 609px;
       }
 
      
@@ -481,26 +542,28 @@
 
       <!-- Description Section -->
       <div class="paragraphs-container">
-        <p>
-          Find your ideal PG accommodation with ease. Whether you're looking for a peaceful retreat or a convenient
-          place to stay, SHIVSHAKTI PG BOOKING offers a range of quality options to suit every need. Our goal is to
-          provide a home-like experience with the perfect blend of comfort and affordability.
-        </p>
+        <p style="color: #000;">Find the perfect PG. Affordable, comfortable, and convenient options designed to make you feel at home.</p>
 
         <div class="number" style="display: flex; align-items: center; margin-top: 33px;">
           <div style="display: flex; align-items: center; margin-right: 40px;">
-            <span style="font-size: 28px; font-weight: bold; color: #333;">421</span>
-            <span style="font-size: 16px; color: #C61300; margin-left: 8px;">PG Rooms Available</span>
+            <span style="font-size: 28px; font-weight: bold; color: #000;">421</span>
+            <span style="font-size: 16px; font-weight: bold; color: #C61300; margin-left: 8px;">PG Rooms Available</span>
           </div>
           <div style="display: flex; align-items: center;">
-            <span style="font-size: 28px; font-weight: bold; color: #333;">451</span>
-            <span style="font-size: 16px; color: #C61300; margin-left: 8px;">Happy Residents</span>
+            <span style="font-size: 28px; font-weight: bold; color: #000;">451</span>
+            <span style="font-size: 16px; font-weight: bold; color: #C61300; margin-left: 8px;">Happy Residents</span>
           </div>
         </div>
+        
 
-        <button  class="mainbutton"  href="./pglisting.html">
-          Book Now <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
-        </button>
+        <a href="./pglisting.html" class="mainbutton" style="text-decoration: none; display: inline-block;">
+          Book Now <i class="fas fa-arrow-right" style="    top: 4px;
+    height: -52px;
+    position: relative;
+    margin-left: 8px;
+    font-size: 23px;"></i>
+        </a>
+        
       </div>
     </div>
 
