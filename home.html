@@ -26,14 +26,20 @@
       position: fixed;
       top: 0;
       left: -250px;
-      width: 250px;
+      width: 781px;
       height: 100%;
       color: white;
-      background-color: #555252;
+      background-color: #F9F9F9;
       overflow-y: auto;
       transition: all 0.3s ease;
       z-index: 1050;
     }
+
+    .flex-column {
+      font-size: 55px;
+      gap: 29px;
+      flex-direction: column !important;
+  }
 
     .sidebar.active {
       left: 0;
@@ -43,6 +49,11 @@
       color: rgb(168, 165, 165);
     }
 
+    @media (min-width: 992px) {
+      .navbar-expand-lg .navbar-nav {
+          flex-direction: row;
+      }
+  }
     .content {
       margin-left: 0;
       transition: margin-left 0.3s ease;
@@ -59,12 +70,12 @@
 
     .close-btn {
       position: absolute;
-      top: 10px;
+      top: -37px;
       right: 10px;
-      font-size: 24px;
+      font-size: 112px;
       color: rgb(0, 0, 0);
       cursor: pointer;
-    }
+  }
     @media (max-width: 480px) {
       .navbar {
         height: 69px;
