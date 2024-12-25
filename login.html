@@ -14,20 +14,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
   
     <style>
-      
+    
       *{
         margin: 0;
         padding: 0;
       }
-     
-  
       body {
         height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
         font-family: Arial, sans-serif;
-     
+        overflow-x: hidden;
       }
   
       .sidebar {
@@ -42,12 +37,6 @@
         transition: all 0.3s ease;
         z-index: 1050;
       }
-
-      .flex-column {
-        font-size: 55px;
-        gap: 29px;
-        flex-direction: column !important;
-    }
   
       .sidebar.active {
         left: 0;

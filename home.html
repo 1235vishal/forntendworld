@@ -10,14 +10,14 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-
   <style>
-    * {
+    
+    *{
       margin: 0;
       padding: 0;
     }
-
     body {
+      height: 100%;
       font-family: Arial, sans-serif;
       overflow-x: hidden;
     }
@@ -26,34 +26,23 @@
       position: fixed;
       top: 0;
       left: -250px;
-      width: 781px;
+      width: 250px;
       height: 100%;
       color: white;
-      background-color: #F9F9F9;
+      background-color: #555252;
       overflow-y: auto;
       transition: all 0.3s ease;
       z-index: 1050;
     }
-
-    .flex-column {
-      font-size: 55px;
-      gap: 29px;
-      flex-direction: column !important;
-  }
 
     .sidebar.active {
       left: 0;
     }
 
     .sidebar .nav-link {
-      color: rgb(168, 165, 165);
+      color: rgb(0, 0, 0);
     }
 
-    @media (min-width: 992px) {
-      .navbar-expand-lg .navbar-nav {
-          flex-direction: row;
-      }
-  }
     .content {
       margin-left: 0;
       transition: margin-left 0.3s ease;
@@ -67,20 +56,13 @@
       cursor: pointer;
     }
 
-
     .close-btn {
       position: absolute;
-      top: -37px;
+      top: 10px;
       right: 10px;
-      font-size: 112px;
+      font-size: 24px;
       color: rgb(0, 0, 0);
       cursor: pointer;
-  }
-    @media (max-width: 480px) {
-      .navbar {
-        height: 69px;
-        width: 180%;
-    }
     }
 
     @media (max-width: 768px) {
@@ -94,16 +76,14 @@
 
       .navbar {
         height: 69px;
-        width: 180%;
-    }
-
+        width: 163%;
       }
 
       .navbar-toggler {
         top: -18px;
         position: relative;
       }
-    
+    }
   </style>
 </head>
 
