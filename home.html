@@ -285,9 +285,68 @@
     }
 
     @media (max-width: 480px) {
+   
       .about-container {
         position: relative;
         left: 102px;
+      }
+
+      .images-container {
+        position: relative;
+        top: 30px;
+        left: -15px;
+        flex-direction: row;
+        /* Keep images in a row for mobile */
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        /* Smaller gap on mobile */
+      }
+
+      .paragraphs-container {
+        right: -7px;
+        position: relative;
+        top: 325px;
+      }
+
+      .heading-container h1{
+        position: relative;
+        right: -4px;
+      }
+
+      .paragraphs-container p{
+        margin-top: 33px;
+    font-size: 21px;
+   
+      }
+      .aboutbigbox {
+        left: 61px;
+        position: relative;
+        top: -217px;
+      }
+
+      button {
+        top: 24px;
+        position: relative;
+      }
+
+
+      .main-image {
+        position: relative;
+        width: 50%;
+        height: 288px;
+      }
+
+      .square-images {
+        flex-direction: column;
+        /* Stack square images vertically */
+        width: 50%;
+      
+      }
+
+      .square-images img {
+        width: 119%;
+        height: 133px;
       }
     }
 
